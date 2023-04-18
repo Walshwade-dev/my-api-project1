@@ -8,37 +8,36 @@ There is a collection of;
 
 1. BOOKS;
 The books have:
-    ISBN, title, Publication date => pub date, language, number of pages => num pages, Authors[], category[].
+    ISBN, title, Publication date = pub date, language, number of pages = num pages, Authors[], category[].
 
 
 2. Authors;
-    Have an id, name and books authored => an array 
+    Have an id, name and books authored = an array 
 
 3. Publications.
     id, name, book.
 
-=> Design an API for the above information.
+= Design an API for the above information.
 
 
 1. BOOKS;
     An API is needed to:-
-        - get all the books. -------> DONE.
-        - get a specific book. -------> DONE. 
-        - get a list of books based on a category. ---------> DONE.
-        - get a list of books based on a language. ----------> DONE.
-        - get a list of books based on number of publications.
+        - get all the books.                                        ==> DONE.
+        - get a specific book.                                      ==> DONE.
+        - get a list of books based on a category.                  ==> DONE.
+        - get a list of books based on a language.                  ==> DONE.
 
 2. AUTHORS;
     An api is needed to:- 
-        - get all the authors. ----> DONE.
-        - get a specific author based on the id. ----------> DONE
-        - get a list of authors based on a book. ----------> DONE
+        - get all the authors.  .                                   ==> DONE.
+        - get a specific author based on the id.                    ==> DONE.
+        - get a list of authors based on a book.                    ==> DONE.
 
 3. PUBLICATIONS;
     An api is needed to:- 
-        - get all the publications. ------------> DONE
-        - get a specific publications. -----------> DONE
-        - get a list of publications based on a book. --------------> DONE
+        - get all the publications.                                ==> DONE;
+        - get a specific publications.                             ==> DONE;
+        - get a list of publications based on a book.              ==> DONE;
 
 
 
