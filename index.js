@@ -213,6 +213,40 @@ app.get("/publications/book/:isbn", (req, res) => {
     return res.json({publication: getSpecificPublication});
 });
 
+
+
+/**************************************** POST Request ****************************************************************/
+// PUSH used to add data to the database, sending data to a storage container.
+// Bodyparser is needed when pushing your items to a container. This helps in executing of the post request.
+// Bodyparser enables express to read the body and convert the data into a json readable format.
+
+var bodyparser = require('body-parser');
+
+app.use(bodyparser.urlencoded({extended:true})); // indicates that any request passed will have multiple formats.
+app.use(bodyparser.json()); // Necessary to tell the app to use json format encoding.
+
+/*
+    Route:              /book/new.
+    Description:        Add new books.
+    Access:             PUBLIC
+    Parameter:          NONE
+    Methods:            POST
+ */
+
+
+
+app.post("/book/new", (req, res) => {
+    const newBook = req.body;
+    database.books.push(newBook);
+    return res.json({updatedBooks: database.books});
+})
+
+
+
+
+
+
+
 app.listen(3000, () => {
     console.log(`Server is up and running at port ${3000}`);
 });
