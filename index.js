@@ -242,7 +242,35 @@ app.post("/book/new", (req, res) => {
 })
 
 
+/*
+    Route:              /authors/new.
+    Description:        Add a new author.
+    Access:             PUBLIC
+    Parameter:          NONE
+    Methods:            POST
+ */
 
+app.post("/authors/new", (req, res) => {
+    const newAuthor = req.body;
+    database.author.push(newAuthor);
+    return res.json({author: database.author});
+});
+
+
+/*
+    Route           /publication/new.
+    Description:    add a new publication.
+    Access:         PUBLIC.
+    Parameter:      NONE.
+    Methods:        POST.
+*/
+
+
+app.post("/publications/new", (req, res) => {
+    const newPublication = req.body;
+    database.publication.push(newPublication);
+    return res.json(database.publication);
+});
 
 
 

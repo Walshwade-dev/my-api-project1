@@ -41,7 +41,13 @@ The books have:
 
 
 
-/**************PUSH***************/
+/**************POST REQUEST***************/
 
-//
+//1. ADD NEW BOOK                           ==> DONE.
+//2. ADD NEW PUBLICATION 
+//3. ADD NEW AUTHOR                     
+
+TASK: use if else inside the post request and create a logic 
+      use the logic to check if the data is present in the data set, 
+      then update it or push it.
 
