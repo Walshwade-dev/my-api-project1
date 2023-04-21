@@ -273,6 +273,96 @@ app.post("/publications/new", (req, res) => {
 });
 
 
+/********************** PUT REQUESt *******************************/
+/*
+    Route           /publicatioon/update/book
+    Description     update/ add new publication
+    Access          PUBLIC
+    Parameter       isbn
+    Methods         PUT
+*/
+
+
+app.put("/publications/update/book/:isbn", (req, res) => {
+    // update our publication in the database.
+    database.publication.forEach((pub) => {
+        if(pub.id = req.body.pubId){
+            return pub.books.push(req.params.isbn);
+        };
+    }); 
+
+    //Update the book database
+    database.books.forEach((book) => {
+        if(book.ISBN === req.params.isbn){
+            book.publications = req.body.pubId;
+            return;
+        }
+    });
+
+    return res.json({
+        books: database.books,
+        publications: database.publication,
+        message: "Successfully updated publications"
+    });
+
+});
+
+
+/***********************DELETE REQUEST ***************/
+
+
+/*
+    ROUTE           /book/delete
+    DESCRIPTION     Delete a book
+    ACCESS          PUBLIC
+    PARAMETER       ISBN
+    METHODS         Delete
+*/
+
+app.delete("/book/delete/:isbn", (req, res) => {
+    //A book that doen't match with the isbn is to be sent to an updatedBookDatabase array and filter out the rest
+    const updatedBookDatabase= database.books.filter((book) => book.ISBN !== req.params.isbn);
+    database.books = updatedBookDatabase;
+
+    return res.json({books: database.books});
+});
+
+
+/*
+    ROUTE           /book/author/:authorId/:isbn
+    DESCRIPTION     Delete an author from a book and a book from the given author
+    ACCESS          PUBLIC
+    PARAMETER       author, ISBN
+    METHODS         Delete
+*/
+
+app.delete('/book/delete/author/:isbn/:authorId', (req, res) => {
+    // update the book database
+   database.books.forEach((book) => {
+    if(book.ISBN === req.params.isbn){
+        const newAuthorList = book.author.filter((eachAuthor) => eachAuthor !== parseInt(req.params.authorId));
+        book.author = newAuthorList;
+    }
+   });
+
+   // update the author database.
+   database.author.forEach((eachAuthor) => {
+    if(eachAuthor.id !== parseInt(req.params.authorId)){
+        const newBookList = eachAuthor.books.filter((book) => {
+            book !== req.params.isbn;
+        });
+        eachAuthor.books = newBookList;
+        return;
+    }
+   });
+
+   res.json({
+    book: database.books,
+    author: database.author,
+    message: "Successful deletion of book and author!!"
+   })
+
+});
 
 
 app.listen(3000, () => {

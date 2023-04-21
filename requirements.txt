@@ -51,3 +51,13 @@ TASK: use if else inside the post request and create a logic
       use the logic to check if the data is present in the data set, 
       then update it or push it.
 
+
+
+
+
+//************ DELETE REQUEST *********
+1. Delete a book
+2. Delete author from book
+3. Delete author from book and related nook from author.
+
+
